@@ -181,5 +181,41 @@ public class preguntas extends AppCompatActivity {
                 "Relatos de los hechos ocurridos",
                 "Todas las anteriores",
                 4));
+        questionList.add(new ModeloPregunta("Cuando usted sale con su vehículo después de estar parqueado a la orilla de una cuneta. ¿Qué debe hacer?",
+                "Enciende la señal, observa hacia adelante y sale con precaución",
+                "Enciende la señal, hace uso de los espejos retrovisores, observa hacia atrás por su hombro, y sale con precaución",
+                "Enciende la señal respectiva y sale con su vehículo",
+                "Enciende la señal y sale con su vehículo sin ninguna precaución",
+                2));
+        questionList.add(new ModeloPregunta("¿Qué debe de tener presente y cumplir cuando conduce un vehículo?",
+                "No estacionarse en curva",
+                "2-\tAumentar la velocidad de su vehículo al atravesar la bocacalle ",
+                "Conducir durante la noche con luz altas dentro de la ciudad",
+                "Dejar el vehículo estacionado a menos de 5 metros de la esquina, de las intersecciones urbana y de los hidrantes públicos",
+                1));
+        questionList.add(new ModeloPregunta("Para los conductores de los vehículos es permitido ",
+                "Portar licencia de conducir deteriorada",
+                "Portar licencia de conducir no adecuada al vehículo",
+                "Portar licencia de conducir vencida, suspendida o cancelada",
+                "Ninguna de las anteriores",
+                4));
+        questionList.add(new ModeloPregunta("La señal “puente angosto” ¿Es una señal?",
+                "Preventiva ",
+                "Restrictiva ",
+                "Informativa",
+                "Dispositivo para protección de obras",
+                1));
+        questionList.add(new ModeloPregunta("Al conductor involucrado en un accidente y en esta de embriaguez o bajo efectos de droga será sancionado con:",
+                "multa de B/ 50.00  ",
+                "un mes de arresto  ",
+                "3 a 5 años de cárcel",
+                "Suspención de licencia por un mes.",
+                4));
+        questionList.add(new ModeloPregunta("La señal que nos indica el peso permitido en un lugar determinado ¿Es una señal? ",
+                "Preventiva ",
+                "Restrictiva ",
+                "Informativa",
+                "Dispositivo para protección de obras",
+                2));
     }
 }
