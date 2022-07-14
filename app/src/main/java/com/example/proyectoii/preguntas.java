@@ -2,12 +2,13 @@ package com.example.proyectoii;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.View;
+//import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -26,6 +27,7 @@ public class preguntas extends AppCompatActivity {
     int totalQ;
     int qCounter = 0;
     int score = 0;
+    String ptss = "";
 
     ColorStateList dfRbColor;
     boolean answered;
@@ -62,23 +64,21 @@ public class preguntas extends AppCompatActivity {
         totalQ = questionList.size();
         showNextQuestion();
 
-        btnSiguiente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(answered == false){
-                    if(rb.isChecked() || rb2.isChecked() || rb3.isChecked() || rb4.isChecked()){
-                        checkAnswer();
-                        countDownTimer.cancel();
-                    }else{
-                        Toast.makeText(preguntas.this, "Selecciona una opción.", Toast.LENGTH_SHORT).show();
-                    }
+        btnSiguiente.setOnClickListener(view -> {
+            if(!answered){
+                if(rb.isChecked() || rb2.isChecked() || rb3.isChecked() || rb4.isChecked()){
+                    checkAnswer();
+                    //countDownTimer.cancel();
                 }else{
-                    showNextQuestion();
+                    Toast.makeText(preguntas.this, "Selecciona una opción.", Toast.LENGTH_SHORT).show();
                 }
+            }else{
+                showNextQuestion();
             }
         });
     }
 
+    @SuppressLint("SetTextI18n")
     private void checkAnswer() {
         answered = true;
         RadioButton rbSelected = findViewById(radioGroup.getCheckedRadioButtonId());
@@ -117,6 +117,7 @@ public class preguntas extends AppCompatActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private void showNextQuestion() {
         radioGroup.clearCheck();
         rb.setTextColor(dfRbColor);
@@ -125,7 +126,7 @@ public class preguntas extends AppCompatActivity {
         rb4.setTextColor(dfRbColor);
 
         if(qCounter<totalQ){
-            timer();
+            //timer();
             currentQuestion = questionList.get(qCounter);
             tvQuestion.setText(currentQuestion.getQuestion());
             rb.setText(currentQuestion.getRb());
@@ -138,12 +139,16 @@ public class preguntas extends AppCompatActivity {
             tvQuestionNum.setText("Pregunta: "+qCounter+"/"+totalQ);
             answered = false;
         }else{
-            finish();
+            ptss = String.valueOf(score);
+            Intent intent = new Intent(getApplicationContext(), resultados.class);
+            intent.putExtra("puntaje", ptss);
+            startActivity(intent);
         }
     }
 
-    private void timer() {
+    /*private void timer() {
         countDownTimer = new CountDownTimer(20000,1000) {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onTick(long l) {
                 tvCounter.setText("00:"+ 1/1000);
@@ -154,7 +159,7 @@ public class preguntas extends AppCompatActivity {
                 showNextQuestion();
             }
         }.start();
-    }
+    }*/
 
     private void addQuestions(){
         questionList.add(new ModeloPregunta("Los vehículos de transporte selectivo, deben poseer.",
